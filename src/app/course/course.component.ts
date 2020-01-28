@@ -1,10 +1,10 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {Course} from '../model/course';
-import {finalize, tap} from 'rxjs/operators';
+import {Course} from '@app/model/course';
+import {Lesson} from '@app/model/lesson';
+import {CoursesService} from '@app/services/courses.service';
 import {Observable} from 'rxjs';
-import {Lesson} from '../model/lesson';
-import {CoursesService} from '../services/courses.service';
+import {finalize, tap} from 'rxjs/operators';
 
 
 @Component({

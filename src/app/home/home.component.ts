@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {Course} from '../model/course';
+import {Course} from '@app/model/course';
+import {CoursesService} from '@app/services/courses.service';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
-import {CoursesService} from '../services/courses.service';
 
 
 @Component({
