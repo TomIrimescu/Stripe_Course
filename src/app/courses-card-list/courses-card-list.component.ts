@@ -39,16 +39,9 @@ export class CoursesCardListComponent implements OnInit {
   }
 
   purchaseCourse(course: Course, isLoggedIn: boolean) {
+    if (!isLoggedIn) {
 
+    }
   }
 
 }
-
-
-
-
-
-
-
-
-

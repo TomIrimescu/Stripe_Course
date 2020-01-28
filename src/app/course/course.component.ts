@@ -58,7 +58,6 @@ export class CourseComponent implements OnInit {
               finalize(() => this.loading = false)
           )
           .subscribe(lessons => this.lessons = this.lessons.concat(lessons));
-
   }
 
 }

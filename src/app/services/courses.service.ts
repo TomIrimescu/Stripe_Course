@@ -17,14 +17,14 @@ export class CoursesService {
 
   }
 
-    saveCourse(courseId:string, changes: Partial<Course>): Observable<any> {
+    saveCourse(courseId: string, changes: Partial<Course>): Observable<any> {
       return from(this.db.doc(`courses/${courseId}`).update(changes));
-    }  
+    }
 
     loadAllCourses(): Observable<Course[]> {
         return this.db.collection(
             'courses',
-                ref=> ref.orderBy("seqNo")
+                ref => ref.orderBy('seqNo')
             )
             .snapshotChanges()
             .pipe(
@@ -33,23 +33,23 @@ export class CoursesService {
     }
 
 
-    findCourseByUrl(courseUrl: string):Observable<Course> {
+    findCourseByUrl(courseUrl: string): Observable<Course> {
         return this.db.collection('courses',
-            ref=> ref.where("url", "==", courseUrl))
+            ref => ref.where('url', '==', courseUrl))
             .snapshotChanges()
             .pipe(
                 map(snaps => {
 
                     const courses = convertSnaps<Course>(snaps);
 
-                    return courses.length == 1 ? courses[0]: undefined;
+                    return courses.length === 1 ? courses[0] : undefined;
                 }),
                 first()
-            )
+            );
     }
 
-    findLessons(courseId:string, sortOrder: OrderByDirection = 'asc',
-                pageNumber = 0, pageSize = 3):Observable<Lesson[]> {
+    findLessons(courseId: string, sortOrder: OrderByDirection = 'asc',
+                pageNumber = 0, pageSize = 3): Observable<Lesson[]> {
 
       return this.db.collection(`courses/${courseId}/lessons`,
                 ref => ref.orderBy('seqNo', sortOrder)
@@ -59,7 +59,7 @@ export class CoursesService {
           .pipe(
               map(snaps => convertSnaps<Lesson>(snaps)),
               first()
-          )
+          );
 
     }
 
